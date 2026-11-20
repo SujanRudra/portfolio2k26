@@ -1,0 +1,100 @@
+/* ==============================
+   NAVIGATION
+============================== */
+
+header {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.navbar {
+    max-width: 1250px;
+    margin: auto;
+    padding: 28px 35px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 27px;
+    font-weight: 700;
+    color: white;
+    text-decoration: none;
+}
+
+.logo span {
+    color: var(--primary);
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 35px;
+}
+
+.nav-links a {
+    position: relative;
+    color: var(--muted);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+/* Hover and active state */
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--primary);
+    text-shadow: 0 0 10px var(--primary);
+}
+
+/* Animated underline */
+.nav-links a::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -7px;
+    left: 0;
+    background: var(--primary);
+    box-shadow: 0 0 8px var(--primary);
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+    width: 100%;
+}
+
+.nav-button {
+    color: var(--primary);
+    text-decoration: none;
+    border: 1px solid var(--primary);
+    padding: 11px 20px;
+    border-radius: 5px;
+    font-size: 13px;
+    /* transition: 0.3s; */
+    transition: all 0.3s ease;
+}
+
+.nav-button:hover {
+    background: var(--primary);
+    color: var(--background);
+    transform: translateY(-3px);
+    box-shadow: 0 0 15px var(--primary);
+    /* box-shadow: 0 0 20px rgba(0, 245, 255, 0.4); */
+}
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 27px;
+    cursor: pointer;
+}
