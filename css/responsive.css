@@ -266,14 +266,14 @@
     }
 
     .orbit-one {
-        width: 200px;
-        height: 200px;
-    }
+       width: 60vw;
+       height: 60vw;
+   }
 
-    .orbit-two {
-        width: 190px;
-        height: 190px;
-    }
+   .orbit-two {
+       width: 48vw;
+       height: 48vw;
+   }
 
 }
 
