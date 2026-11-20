@@ -1,4 +1,3 @@
-
 /* ==============================
    RESPONSIVE DESIGN
 ============================== */
@@ -188,8 +187,8 @@
     }
 
     .orbit-two {
-        width: 320px;
-        height: 240px;
+        width: 280px;
+        height: 190px;
     }
 
     .floating-tag {
@@ -395,4 +394,20 @@
     .contact-box {
         padding: 35px 20px;
     }
+}
+
+/* Prevent horizontal movement on mobile */
+
+@media (max-width: 650px) {
+
+    html,
+    body {
+        overflow-x: clip;
+    }
+
+    .hero-visual {
+        max-width: 320px;
+        margin-inline: auto;
+    }
+
 }
