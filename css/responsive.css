@@ -169,8 +169,20 @@
     }
 
     .profile-placeholder {
-        height: 190px;
-        margin: 15px 0;
+        width: 190px;
+        aspect-ratio: 1 / 1;
+        height: auto;
+        margin: 15px auto;
+        border-radius: 50%;
+        overflow: hidden;
+    }
+
+    .profile-img {
+        width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: cover;
+        border-radius: 50%;
     }
 
     .profile-initials {
@@ -182,13 +194,13 @@
     }
 
     .orbit-one {
-        width: 290px;
-        height: 290px;
+        width: 280px;
+        height: 260px;
     }
 
     .orbit-two {
-        width: 230px;
-        height: 230px;
+        width: 260px;
+        height: 280px;
     }
 
     .floating-tag {
@@ -248,17 +260,19 @@
     }
 
     .profile-placeholder {
-        height: 165px;
+        width: 165px;
+        aspect-ratio: 1 / 1;
+        height: auto;
     }
 
     .orbit-one {
-        width: 260px;
-        height: 260px;
+        width: 200px;
+        height: 200px;
     }
 
     .orbit-two {
-        width: 210px;
-        height: 210px;
+        width: 1900px;
+        height: 190px;
     }
 
 }
