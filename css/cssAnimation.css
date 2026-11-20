@@ -98,14 +98,14 @@
     }
 }
 
-/* Only the dot moves */
+/* Rotate the second orbit while keeping its tilt */
 @keyframes secondDot {
     from {
-        transform: rotate(0deg);
+        transform: rotate(-35deg);
     }
 
     to {
-        transform: rotate(360deg);
+        transform: rotate(325deg);
     }
 }
 
