@@ -120,38 +120,97 @@ revealElements.forEach(element => {
 
 
 // ==============================
-// ACTIVE NAVIGATION ON SCROLL
+// DYNAMIC PAGE NAVIGATION
 // ==============================
 
-const sections = document.querySelectorAll("main section");
+// Get all main sections
+const pageSections = document.querySelectorAll("main > section");
+
+// Get navbar links
 const activeNavLinks = document.querySelectorAll(".nav-links a");
 
-window.addEventListener("scroll", () => {
+// Add a class to identify portfolio pages
+pageSections.forEach(section => {
+    section.classList.add("portfolio-page");
+});
 
-    let current = "";
 
-    sections.forEach(section => {
+// Function to switch pages
+function showPage(pageId, updateHistory = true) {
 
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.offsetHeight;
+    const targetPage = Array.from(pageSections)
+        .find(section => section.id === pageId);
 
-        if (
-            window.scrollY >= sectionTop - 150 &&
-            window.scrollY < sectionTop + sectionHeight - 150
-        ) {
-            current = section.getAttribute("id");
-        }
+    // Fallback to Home if the requested page doesn't exist
+    const selectedPage = targetPage || pageSections[0];
 
+    if (!selectedPage) return;
+
+    // Show selected section and hide the others
+    pageSections.forEach(section => {
+        section.classList.toggle(
+            "active-page",
+            section === selectedPage
+        );
     });
 
+    // Update active navbar link
     activeNavLinks.forEach(link => {
+        link.classList.toggle(
+            "active",
+            link.getAttribute("href") === `#${selectedPage.id}`
+        );
+    });
 
-        link.classList.remove("active");
+    // Close mobile navigation
+    navLinks.classList.remove("show");
+    menuToggle.textContent = "☰";
 
-        if (link.getAttribute("href") === `#${current}`) {
-            link.classList.add("active");
-        }
+    // Return to the top of the page
+    window.scrollTo(0, 0);
+
+    // Update browser URL
+    if (
+        updateHistory &&
+        window.location.hash !== `#${selectedPage.id}`
+    ) {
+        history.pushState(null, "", `#${selectedPage.id}`);
+    }
+}
+
+
+// Handle clicks on internal section links
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+
+    link.addEventListener("click", event => {
+
+        const pageId = link.getAttribute("href").substring(1);
+
+        const targetExists = Array.from(pageSections)
+            .some(section => section.id === pageId);
+
+        if (!targetExists) return;
+
+        event.preventDefault();
+
+        showPage(pageId);
 
     });
 
 });
+
+
+// Support browser Back and Forward buttons
+window.addEventListener("popstate", () => {
+
+    const pageId = window.location.hash.substring(1);
+
+    showPage(pageId, false);
+
+});
+
+
+// Display the requested page when the website opens
+const initialPage = window.location.hash.substring(1);
+
+showPage(initialPage || "home", false);
