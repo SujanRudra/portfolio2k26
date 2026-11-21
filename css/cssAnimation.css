@@ -63,6 +63,7 @@
     }
 }
 
+/* For Technology Tags */
 /* Technology tag floating animations */
 
 @keyframes floatTagOne {
@@ -113,4 +114,28 @@
     50% {
         opacity: 0;
     }
+}
+
+/* ==============================
+   DYNAMIC PAGE TRANSITIONS
+============================== */
+
+.portfolio-page:not(.active-page) {
+    display: none !important;
+}
+
+@keyframes pageEnter {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.portfolio-page.active-page {
+    animation: pageEnter 0.4s ease both;
 }
