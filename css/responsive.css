@@ -349,15 +349,6 @@
         font-size: 11px;
     }
 
-    html {
-        scroll-snap-type: y proximity;
-    }
-
-    .hero,
-    .about-section {
-        scroll-snap-stop: normal;
-    }
-
     .about-section {
         min-height: 100vh;
         height: auto;
@@ -380,7 +371,6 @@
     }
 
 }
-
 
 
 /* extra */
